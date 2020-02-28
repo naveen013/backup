@@ -1,0 +1,99 @@
+@CHARSET "ISO-8859-1";
+
+*{
+	margin:0px;
+	padding:0px;
+}
+#body{
+	width:100%;
+	height:651px;
+	background-color:pink;
+
+
+}
+#header{
+		width:100%;
+		height:130px;
+		margin:0 auto;
+		background-color:#2493c1;
+		text-align: center;
+}
+#logo{
+    float:left;
+    background:skyblue; 
+    height:100%; 
+    width:15%;
+}
+#logo1{
+    float:right;
+    background:skyblue; 
+    height:50%; 
+    width:9%;
+}
+#header a{
+	padding-top:20px;
+	float:center;
+	line-height:30px;
+	color:#fff;
+	text-decoration:none;
+	margin-left: 30px;
+}
+#container1{
+		 float:center;
+		width:100%;
+		height:70px;
+		margin:0 auto;
+		text-align:center;
+}
+#left{
+	width:50%;
+	height: 455px;
+	float: left;
+}
+#right{
+
+	width:50%;
+	height: 455px;
+	float: right;
+}
+#banner{
+	z-index:-1;
+	   width:100%;
+	   height:455px;
+	   background-color:pink;
+	   float: left;
+}
+	 *{
+	 margin: 0px;
+	 padding: 0px;
+	 }
+	 #container1 ul{
+	 list-style: none;
+	 }
+	 #container1 li{
+	   background-color: #8dd8ea;
+	   width:150px;
+	   height:70px;
+	   line-height: 50px;
+	   text-align: center;
+	   float: left;
+	   color: black;
+	   font-size: 22px;
+	 }
+	 #container1 ul li:HOVER {
+	  background-color: skyblue;  
+	  position: relative;
+  }
+  #container1 ul ul{
+  display: none;
+  }
+   #container1 ul li:HOVER > ul{
+    display: block;
+    
+   }
+
+
+
+
+
+

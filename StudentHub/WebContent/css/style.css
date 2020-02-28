@@ -1,0 +1,204 @@
+#header{
+	background-color: #45A29E;
+	width: 100%;
+	height: 100px;
+	margin:0px auto;
+}
+#header h1{
+	text-align: center;
+	padding: 10px;
+	float: left;
+	margin-left: 400px;
+}
+#body{
+	height:700px;
+	width:100%;
+}
+input[type=text],[type=password],[type=email],select{
+	width:60%;
+	height:40px;
+}
+#about1{
+	height:500px;
+	width:50%;
+	float:left;
+	background-color: rgba(204, 204, 204, 1);
+}
+#about2{
+	height:500px;
+	width:50%;
+	float:left;
+}
+
+/*for left side of header student hub*/
+.side {
+width: 150px;
+min-width: 5%;
+background-color:;
+float: left;
+height: 100px;
+}
+/*for right side of header  where login & signup in student hub*/
+.side2 {
+width: 200px;
+min-width: 5%;
+background-color: #45A29E;
+float: right;
+height: 100px;
+line-height:50px;
+align-content: right;
+}
+.side2 a{
+	text-decoration:none;
+	text-color:black;
+}
+/*for menu*/
+.menudropdown{
+	width:100%;
+	margin-top:-33px;
+	margin-left:0%;
+}
+.menudropdown ul{
+	padding:0px;/*brings the content of ul to same position*/
+	
+}
+.menudropdown ul li a{
+	text-decoration:none;/* to disable the usual look of a link*/
+	color:white;
+	display:block;/*to make the whole area as a link*/
+}
+.menudropdown ul li{
+	float:left;/*to show the items of list horizontally*/
+	width: 264px;/* give a particular size to every element of list*/
+	background-color:black;
+	color:white; 
+	list-style:none;/*remove bullets*/
+	font-size:20px;
+	border:1px solid black;
+	height:50px;    /*height of ul li contents*/
+	line-height:50px;
+	text-align:center;
+	opacity:0.6;/*for transperancy*/
+}
+.menudropdown ul li ul{
+	display:none;/* hides the element (sublist of a list)*/
+} 
+.menudropdown ul li:hover>ul{
+	display:block;/* display the hidden items of list when hovered*/
+}
+.menudropdown ul li:hover{
+	background-color:#32CD32;
+	opacity:0.9;
+}
+.menudropdown ul li ul li:hover{
+	background-color:navy;
+	opacity:0.9;
+}
+.main{
+	width:100%;
+	height:430px;
+	background-color:#45A29E;
+}
+.footer{
+	clear:both;
+	
+}
+
+#project_main{
+			background-color: #e2f0f5;
+			height: 100%;
+			width: 100%
+		}
+		#project_footer{
+			background-color: pink;
+			height: 50px;
+			width: 100%;
+			text-align: center;
+			font-size: 25px;
+			padding: 17px;
+		}
+
+/*for home page*/
+#home{
+background-color:;
+height:385px;	
+}
+#home img{
+	margin-top:40px;
+	padding:20px;
+	margin-left:20px;
+}
+
+/*for laptop page*/
+.main_tagline{
+			font-size: 20px;
+			font-weight: bolder;
+			font-style: italic;
+			padding: 1px;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+input[type=text], input[type=password] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: dodgerblue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0 0 120px;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+}
+.btn{
+	width:35px;
+	height:40px;
+	background-color:dodgerblue;
+	color:white;
+	border:none;
+	cursor:pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: left;
+  margin:24px 0px 20px 200px;
+}
+
+img.avatar {
+  width: 15%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}

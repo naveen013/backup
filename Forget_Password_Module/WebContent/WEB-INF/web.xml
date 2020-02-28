@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Forget_Password_Module</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Reg</display-name>
+    <servlet-name>Reg</servlet-name>
+    <servlet-class>nit.com.controler.Reg</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Reg</servlet-name>
+    <url-pattern>/process</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Forgot</display-name>
+    <servlet-name>Forgot</servlet-name>
+    <servlet-class>nit.com.controler.Forgot</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Forgot</servlet-name>
+    <url-pattern>/Forgot</url-pattern>
+  </servlet-mapping>
+</web-app>

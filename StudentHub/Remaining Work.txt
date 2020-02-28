@@ -1,0 +1,10 @@
+1.Put Validation on details
+2.Exception Handlings
+3.Activate other modules
+4.About
+5.News/Update
+6.Testing
+7.Designing
+8.Purchasing Domain Name
+9.Choose Appropraite Database
+10.Activate on Server

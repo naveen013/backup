@@ -1,0 +1,258 @@
+
+
+/-------------------TABLE 1 FOR STUHUB USER------------------------------------------/
+
+CREATE TABLE SH_USER (
+SID NUMBER(8),
+LOGIN_ID VARCHAR2(15),
+NAME VARCHAR2(30),
+GENDER VARCHAR2(6),
+EMAIL_ID VARCHAR2(40),
+PASSWORD VARCHAR2(10),
+CONTACT VARCHAR2(12),
+ADDRESS VARCHAR2(50),
+INSTITUTE VARCHAR2(40),
+COURSE VARCHAR2(30), 
+YEAR_OF_ADMISSION NUMBER(5),
+SIGNUP_TIME TIMESTAMP,
+CONSTRAINT c1 PRIMARY KEY(LOGIN_ID));
+
+
+
+
+
+*************************************************************************************************************************
+INSERT INTO SH_USER (SID,LOGIN_ID,NAME,GENDER,EMAIL_ID,PASSWORD,CONTACT
+,ADDRESS,INSTITUTE,COURSE,YEAR_OF_ADMISSION,SIGNUP_TIME) VALUES 
+((SELECT NVL(MAX(SID),0)+1 FROM SH_USER),'mvats','MOHIT SHARMA','male'
+,'mohitvats995@gmail.com','5555','8979621904','B-16/13 Raipur'
+,'NIT Raipur','MCA',2017,sysdate);
+
+
+************************************************************************************************************************
+
+__________________________________TABLE 2 FOR REQUEST__________________________________________________________
+
+
+CREATE TABLE SH_U_REQ(
+REQ_NO NUMBER(5),
+SID NUMBER(25),
+CONSTRAINT c2 PRIMARY KEY(REQ_NO));
+
+___________________________________________________________________________________________________________________
+
+
+----------------------------------------------TABLE 3 FOR LAPTOP_REQ-----------------------------------------------
+
+CREATE TABLE LAP_REQ(
+REQ_NO NUMBER(5),
+QTY NUMBER(2),
+REQ_TIME TIMESTAMP DEFAULT SYSDATE,
+CONSTRAINT c3 PRIMARY KEY(REQ_NO),
+CONSTRAINT c4 FOREIGN KEY(REQ_NO) REFERENCES SH_U_REQ(REQ_NO));
+
+ALTER TABLE LAP_REQ ADD CONSTRAINT c3 FOREIGN KEY(REQ_NO) REFERENCES SH_U_REQ(REQ_NO);
+
+---------------------------------------------------------------------------------------------------------------------
+______________________________________________TABLE 4 FOR LAPTOP DETAILS_____________________________________________
+
+
+CREATE TABLE LAP_DETAILS(
+SNO NUMBER(5),
+REQ_NO NUMBER(5),
+SID NUMBER(8),
+MODEL VARCHAR2(25),
+PROBLEM VARCHAR2(20),
+DESCRIPTION VARCHAR2(70),
+STATUS VARCHAR2(20),
+CONSTRAINT c5 PRIMARY KEY(SNO));
+
+INSERT INTO LAP_DETAILS VALUES((SELECT NVL(MAX(SNO),0)+1 FROM LAP_DETAILS),__,__,___,___,___);
+
+
+
+_________________________TABLE 5 FOR STUFFS_USER____________________________
+CREATE TABLE STUFF_REQ(
+REQ_NO NUMBER(5) PRIMARY KEY,
+SID NUMBER(15),
+REQ_TIME TIMESTAMP DEFAULT SYSDATE,
+FOREIGN KEY (REQ_NO) REFERENCES SH_U_REQ(REQ_NO) 
+);
+
+
+-------------------------TABLE 6
+
+CREATE TABLE STUFF_DETAIL(
+REQ_NO NUMBER(5) primary key,
+SID NUMBER(5),
+ITEM_NAME VARCHAR2(20),
+OTHER VARCHAR2(20),
+MOB_NO VARCHAR(12),
+FOREIGN KEY (REQ_NO) REFERENCES STUFF_REQ(REQ_NO)
+);
+---------------------------------------------------------------------
+
+
+_____________________________TABLES FOR ROOM USER_____________________
+
+TABLE 7>>>>>>>>>>>
+
+CREATE TABLE ROOM_REQ(
+REQ_NO NUMBER(5) PRIMARY KEY,
+SID NUMBER(15),
+REQ_TIME TIMESTAMP DEFAULT SYSDATE,
+FOREIGN KEY (REQ_NO) REFERENCES SH_U_REQ(REQ_NO)
+);
+
+TABLE 8>>>>>>>>>>>>>>>>>>>>
+create table room_detail(
+REQ_NO number(5) primary key,
+SID NUMBER(15),
+address varchar2(50),
+mob_no varchar2(10),
+accommodation varchar2(10),
+price_room number(5),
+FOREIGN KEY (REQ_NO) REFERENCES ROOM_REQ(REQ_NO)
+);
+
+-----------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Table 9 For Books
+
+CREATE TABLE BOOK_STORE(
+BOOK_ID NUMBER(10),
+SUBJECT VARCHAR(30),
+SUBTOPIC VARCHAR(30),
+BOOK_NAME VARCHAR(50),
+AUTHOR VARCHAR(40),
+STATUS VARCHAR2(30),
+CONSTRAINT B1 PRIMARY KEY(BOOK_ID));
+
+
+
+________________________________________________________________________________________________________________________
+							SELLING MODULE
+
+TABLE 10>>>>>>>>>>>>
+create table seller(
+	order_no number(5) primary key,
+	name varchar2(20),
+	mob_no varchar(10)
+);
+TABLE 11>>>>>>>>>>>>>>>>>
+________________________LAPTOP SELL___________________________________
+CREATE TABLE laptop_sell_req(
+ORDER_NO NUMBER(5) PRIMARY KEY,
+REQ_TIME TIMESTAMP DEFAULT SYSDATE,
+FOREIGN KEY (ORDER_NO) REFERENCES SELLER(ORDER_NO)
+);
+
+TABLE 12>>>>>>>>>>>>>>>>>>>>>
+CREATE TABLE LAPTOP_SELL_DETAIL(
+ORDER_NO NUMBER(5) PRIMARY KEY,
+NAME VARCHAR2(20),
+MOB VARCHAR2(20),
+BRAND VARCHAR2(20),
+RAM VARCHAR2(20),
+HARDWARE VARCHAR2(20),
+PROCESSOR VARCHAR2(20),
+PRICE NUMBER(10),
+FOREIGN KEY (ORDER_NO) REFERENCES LAPTOP_SELL_REQ(ORDER_NO)
+);
+
+______________________________________________________________________
+
+
+______________________________ROOM SELL_____________________________
+
+TABLE 13>>>>>>>>>>>>>>>>>>>>>>>>
+CREATE TABLE ROOM_SELL_REQ(
+order_no NUMBER(5) PRIMARY KEY,
+REQ_TIME TIMESTAMP DEFAULT SYSDATE,
+FOREIGN KEY (order_no) REFERENCES seller(order_no)
+);
+
+
+TABLE 14>>>>>>>>>>>>>>>>>>>>>>>>>>
+create table room_sell_detail(
+order_no number(5) primary key,
+name varchar2(10),
+address varchar2(50),
+mob_no varchar2(10),
+accommodation varchar2(10),
+price_room number(5),
+FOREIGN KEY (order_no) REFERENCES ROOM_SELL_REQ(order_no)
+);
+
+_______________________________________________________________________________________________
+
+
+______________________________STUFF SELL____________________________________________
+
+TABLE 15>>>>>>>>>>>>>>>>
+CREATE TABLE STUFF_SELL_REQ(
+ORDER_NO NUMBER(5) PRIMARY KEY,
+REQ_TIME TIMESTAMP DEFAULT SYSDATE,
+FOREIGN KEY (ORDER_NO) REFERENCES SELLER(ORDER_NO) 
+);
+
+TABLE 16>>>>>>>>>>>>>>>>>>
+CREATE TABLE STUFF_SELL_DETAIL(
+ORDER_NO NUMBER(5) primary key,
+NAME VARCHAR2(20),
+MOB_NO VARCHAR(12),
+ITEM_NAME VARCHAR2(20),
+OTHER VARCHAR2(20),
+PRICE NUMBER(10),
+FOREIGN KEY (ORDER_NO) REFERENCES STUFF_SELL_REQ(ORDER_NO)
+);
+_______________________________________________________________________________________
+
+_____________________BOOK SELL_______________________________________________________
+
+TABLE 17>>>>>>>>>>>>>>>>>
+CREATE TABLE BOOK_SELLER_DETAIL(
+BOOK_NO NUMBER(5),
+OWNER VARCHAR2(30) NOT NULL,
+CONTACT VARCHAR2(12) NOT NULL,
+EMAIL_ID VARCHAR2(40),
+BOOK_TYPE VARCHAR2(30) NOT NULL,
+BOOK_NAME VARCHAR2(30) NOT NULL,
+BOOK_AUTHOR VARCHAR2(30),
+SELL_PRICE NUMBER(7),
+STATUS VARCHAR2(20) NOT NULL,
+SUBMIT_TIME TIMESTAMP DEFAULT SYSDATE,
+CONSTRAINT BS1 PRIMARY KEY(BOOK_NO)
+);
+
+
+_____________________________________________________________________________________
+
+/-----------------------------DML FOR STUHUB USER---------------------------------------------/
+
+
+INSERT INTO SHUSER VALUES ((SELECT NVL(MAX(SNO),0)+1 FROM SHUSER),'&NAME','&USER_ID','&GENDER',
+'&EMAIL_ID','&PASSWORD','&CONTACT','&ADDRESS','&PROFESSION','&INSTITUTE','&YEAR_OF_ADMISSION');
+
+INSERT INTO SHUSER VALUES ((SELECT NVL(MAX(SNO),0)+1 FROM SHUSER),'ATIF','akhan','MALE',
+'apathan@gmail.com','12321','8987655649','HOSTEL H','STUDENT','NIT RAIPUR','2017');
+
+
+INSERT INTO SHUSER VALUES ((SELECT NVL(MAX(SNO),0)+1 FROM SHUSER),'MOHIT','msharma','MALE',
+'vatsmohit@gmail.com','1234','8970621904','UDAYA SOCIETY','STUDENT','NIT RAIPUR','2017');
+
+
+
+UPDATE SH_USER SET PASSWORD='' WHERE CONDITION;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+
+ALTER TABLE SHUSER ADD CONSTRAINT FK FOREIGN KEY(EMAIL_ID) REFERENCES SHLAPREQ(CUST_ID);
+ALTER TABLE SHUSER DROP COLUMN USER_ID;
+ALTER TABLE SHUSER DROP COLUMN PROFESSION;
+ALTER TABLE SHUSER ADD CONSTRAINT PRK PRIMARY KEY(EMAIL_ID);
+ALTER TABLE SHUSER MODIFY EMAIL_ID VARCHAR2(40);
